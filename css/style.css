@@ -19,4 +19,5 @@ header {
 
 header > a {
     padding: 14px 8px;
+    cursor: pointer;
 }
