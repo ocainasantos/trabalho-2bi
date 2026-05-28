@@ -1,0 +1,22 @@
+* {
+    box-sizing: border-box;
+    margin: 0 auto;
+    font-family: arial;
+    font-size: 25px;
+}
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+}
+
+header { 
+    text-align: center;
+    padding: 17px 10px;
+    border: 2px solid black;
+    background-color: #ccc;
+}
+
+header > a {
+    padding: 14px 8px;
+}
