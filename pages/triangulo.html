@@ -1,0 +1,39 @@
+<div class="container">
+    <label>Informe os valores do triangulo:</label>
+    <input id="PrimeiroValorTriangulo" type="text">
+    <input id="SegundoValorTriangulo" type="text">
+    <input id="TerceiroValorTriangulo" type="text">
+
+    <button onclick="VerificarTriangulo()">Confirmar triangulo</button>
+
+    <h3>Realmente é triangulo? <span id="VerificaSeSEVerdadeiroTriangulo"></span></h3>
+    <h3>Qual o tipo do seu triangulo: <span id="TipoDoTriangulo"></span></h3>
+
+    <script src="triangulo.js"></script>
+    
+</div>
+
+<script>
+    primeirovalorrecebido = document.querySelector("#PrimeiroValorTriangulo");
+    segundovalorrecebido = document.querySelector("#SegundoValorTriangulo");
+    terceirovalorrecebido = document.querySelector("#TerceiroValorTriangulo");
+    verificacaotriangulo = document.querySelector("#VerificaSeSEVerdadeiroTriangulo");
+    tipotriangulojs = document.querySelector("#TipoDoTriangulo");
+
+    function VerificarTriangulo(){
+        console.log("deu ruim")
+        primeirovalor = Number(primeirovalorrecebido.value);
+        segundovalor = Number(segundovalorrecebido.value);
+        terceirovalor = Number(terceirovalorrecebido.value);
+
+        calculotrianguloum = primeirovalor + segundovalor 
+        calculotriangulodois = segundovalor + terceirovalor
+        calculotriangulotres = terceirovalor + primeirovalor
+
+        if(calculotrianguloum > terceirovalor)
+            if(calculotriangulodois > primeirovalor)
+                if(calculotriangulotres > segundovalor)
+                    verificacaotriangulo.textContent = String("Ele e um triangulo!")
+
+}
+</script>
