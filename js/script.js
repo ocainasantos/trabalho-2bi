@@ -32,3 +32,32 @@ function calcularImc(){
     document.getElementById("totalizadores").innerHTML =
      ` <h3>Seu IMC é de: ${valorImc.toFixed(2)} e você esta <strong>${classificacao}</strong> </h3> `
 }
+
+// Pagina 5 - Calcular Credito Bancario 
+function calcularCreditobancario(){
+    // Inputs
+    let saldoMedio = parseFloat(document.getElementById("saldoMedio").value);
+    let classificacao = "";
+
+    // Funcao para calcular credito
+    function calcularCredito(saldo, porcentagem){
+        let resultado = saldo * (porcentagem / 100)
+        classificacao = `voce tem direto a R$${resultado} de Credito!`;
+    }
+
+    // Verificar qual classificação
+    if(saldoMedio >= 601){
+        calcularCredito(saldoMedio, 40)
+    } else if(saldoMedio >= 401){
+        calcularCredito(saldoMedio, 30)
+    } else if(saldoMedio >= 201){
+        calcularCredito(saldoMedio, 20)
+    } else {
+        classificacao = "voce nao tem nenhum Credito Disponivel"
+    }
+
+    // Escrever no HTML
+    document.getElementById("totalizadores").innerHTML = 
+     ` <h3>Saldo Medio é de: R$${String(saldoMedio.toFixed(2))} e <strong>${classificacao}</strong> </h3> `
+}
+
