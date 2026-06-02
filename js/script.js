@@ -62,7 +62,6 @@ function calcularCreditobancario(){
 }
 
 // Pagina 6 - Lanchonete
-
 function lanchonete(){
     let input = document.getElementById("cardapio").value;
     let quantidade = Number(document.getElementById("quantidade").value)
@@ -88,3 +87,22 @@ function lanchonete(){
 }
 
 // Pagina 8
+function calcularPagamento(){
+    let nivelSelect = Number(document.getElementById("nivelSelect").value)
+    let quantidadeHoras = Number(document.getElementById("quantidadeHora").value)
+    let salario = 0;
+    const niveis = [
+        {nivel: 1, valorHora: 12},
+        {nivel: 2, valorHora: 17},
+        {nivel: 3, valorHora: 25}
+    ]
+
+    niveis.forEach(nivel => {
+        if(nivel.nivel == nivelSelect){
+            salario = Number(nivel.valorHora) * quantidadeHoras * 4.5;
+        }
+    });
+    // Escrever no HTML
+    document.getElementById("totalizadores").innerHTML = 
+     ` <h3>Voce e nivel ${nivelSelect} e seu salario e R$${salario.toFixed(2)} </h3> `
+}
