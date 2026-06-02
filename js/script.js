@@ -61,3 +61,30 @@ function calcularCreditobancario(){
      ` <h3>Saldo Medio é de: R$${String(saldoMedio.toFixed(2))} e <strong>${classificacao}</strong> </h3> `
 }
 
+// Pagina 6 - Lanchonete
+
+function lanchonete(){
+    let input = document.getElementById("cardapio").value;
+    let quantidade = Number(document.getElementById("quantidade").value)
+
+    const items = [
+        {nome: "Cachorro Quente", valor: 11},
+        {nome: "Bauru", valor: 8.50},
+        {nome: "Misto Quente", valor: 8},
+        {nome: "Hamburguer", valor: 9},
+        {nome: "CheseeBurguer", valor: 10},
+        {nome:"Refrigerante", valor: 4.5}
+    ]
+
+    items.forEach(item => {
+        if(item.nome == input){
+            preco = item.valor * quantidade;
+        }
+    });
+
+    document.getElementById("totalizadores").innerHTML = 
+        `<h3>Voce selecionou ${quantidade} ${input}, Total foi R$${preco.toFixed(2)}</h3>`
+
+}
+
+// Pagina 8
