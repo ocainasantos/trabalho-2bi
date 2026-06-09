@@ -5,6 +5,52 @@ async function carregarPagina(url) {
     document.getElementById("app").innerHTML = html;
 }
 
+//Pagina 1 - Triangulo
+function VerificarTriangulo() {
+    primeirovalorrecebido = document.querySelector("#PrimeiroValorTriangulo");
+    segundovalorrecebido = document.querySelector("#SegundoValorTriangulo");
+    terceirovalorrecebido = document.querySelector("#TerceiroValorTriangulo");
+    verificacaotriangulo = document.querySelector("#VerificaSeSEVerdadeiroTriangulo");
+    tipotriangulojs = document.querySelector("#TipoDoTriangulo");
+    
+    let primeirovalor = Number(primeirovalorrecebido.value);
+    let segundovalor = Number(segundovalorrecebido.value);
+    let terceirovalor = Number(terceirovalorrecebido.value);
+
+    let calculotrianguloum = primeirovalor + segundovalor
+    let calculotriangulodois = segundovalor + terceirovalor
+    let calculotriangulotres = terceirovalor + primeirovalor
+
+    if (
+        calculotrianguloum > terceirovalor &&
+        calculotriangulodois > primeirovalor &&
+        calculotriangulotres > segundovalor
+
+    ) {
+        verificacaotriangulo.textContent = "Ele e um triangulo!";
+
+    }
+    else {
+        verificacaotriangulo.textContent = "Nao e um triangulo!";
+    }
+
+        if (
+            primeirovalor === segundovalor &&
+            segundovalor === terceirovalor
+        ) {
+            tipotriangulojs.textContent = "Equilátero";
+        }
+        else if (
+            primeirovalor === segundovalor ||
+            primeirovalor === terceirovalor ||
+            segundovalor === terceirovalor
+        ) {
+            tipotriangulojs.textContent = "Isósceles";
+        }
+        else {
+            tipotriangulojs.textContent = "Escaleno";
+        }
+}
 // Pagina 2 - Calcular IMC
 function calcularImc(){
 
@@ -32,7 +78,86 @@ function calcularImc(){
     document.getElementById("totalizadores").innerHTML =
      ` <h3>Seu IMC é de: ${valorImc.toFixed(2)} e você esta <strong>${classificacao}</strong> </h3> `
 }
+// Pagina 3 - Calcular Imposto
+function CalcularImposto() {
+    anocarro = document.querySelector("#AnodoCarroHtml");
+    valorfipe = document.querySelector("#ValorTabelaCarroHtml");
+    impostocarro = document.querySelector("#ValorImpostoSobreCarro");
+    valortotalfinal = document.querySelector("#ValorTotalCarro");
 
+    let anorecebido = Number(anocarro.value);
+    let valorrecebidofipe = Number(valorfipe.value);
+
+    let impostorecebidocarro = Number(impostocarro.value);
+    let valorfinalsomado = Number(valortotalfinal.value);
+
+    if (anorecebido <= 1989) {
+        impostorecebidocarro = valorrecebidofipe * 0.01;
+    }
+    else {
+        impostorecebidocarro = valorrecebidofipe * 0.015;
+    }
+
+    valorfinalsomado = valorrecebidofipe + impostorecebidocarro;
+
+    impostocarro.textContent = impostorecebidocarro.toFixed(2);
+    valortotalfinal.textContent = valorfinalsomado.toFixed(2);
+}
+// Pagina 4 - Salario
+function CalcularSalario() {
+    cargorecebido = document.querySelector("#CargoInformado");
+    salariorecebido = document.querySelector("#SalarioInformado");
+    valorfinal = document.querySelector("#ValorSalarioNovo");
+    valoraumentado = document.querySelector("#AumentoSalario");
+    salarioantigoexibido = document.querySelector("#SalarioAntigo");
+    diferencaentreossalarios = document.querySelector("#DiferencaSalarios");
+
+    // Recebe o cargo digitado pelo usuário
+    // O toLowerCase() transforma tudo em minúsculo
+    // Ex.: "Gerente" -> "gerente"
+    let cargoquefoipassado = cargorecebido.value.toLowerCase();
+
+    // Recebe o salário digitado e converte para número
+    let salarioatualrecebido = Number(salariorecebido.value);
+
+    // Variáveis que serão calculadas
+    let valorfinaldosalario;
+    let valordeaumento;
+    let diferencageral;
+
+    // Verifica qual cargo foi informado
+    // e aplica a porcentagem correspondente
+
+    if (cargoquefoipassado === "gerente") {
+       // Aumento de 10%
+        valordeaumento = salarioatualrecebido * 0.10;
+    }
+    else if (cargoquefoipassado === "engenheiro") {
+        // Aumento de 20%
+        valordeaumento = salarioatualrecebido * 0.20;
+    }
+    else if (cargoquefoipassado === "tecnico") {
+        // Aumento de 30%
+        valordeaumento = salarioatualrecebido * 0.30;
+    }
+    else {
+        // Caso o cargo não exista na tabela, aplica aumento de 40%
+        valordeaumento = salarioatualrecebido * 0.40;
+    }
+    // Calcula o novo salário
+    valorfinaldosalario = valordeaumento + salarioatualrecebido;
+    // Calcula a diferença entre o salário novo e o antigo
+    diferencageral = valorfinaldosalario - salarioatualrecebido;
+    // Exibe o novo salário na tela
+    valorfinal.textContent = valorfinaldosalario.toFixed(2);
+    // Exibe apenas o valor do aumento
+    valoraumentado.textContent = valordeaumento.toFixed(2);
+    // Exibe o salário antigo informado pelo usuário
+    salarioantigoexibido.textContent = salarioatualrecebido.toFixed(2);
+    // Exibe a diferença entre o salário novo e o antigo
+    diferencaentreossalarios.textContent = diferencageral.toFixed(2)
+
+}
 // Pagina 5 - Calcular Credito Bancario 
 function calcularCreditobancario(){
     // Inputs
@@ -60,7 +185,6 @@ function calcularCreditobancario(){
     document.getElementById("totalizadores").innerHTML = 
      ` <h3>Saldo Medio é de: R$${String(saldoMedio.toFixed(2))} e <strong>${classificacao}</strong> </h3> `
 }
-
 // Pagina 6 - Lanchonete
 function lanchonete(){
     let input = document.getElementById("cardapio").value;
@@ -85,8 +209,44 @@ function lanchonete(){
         `<h3>Voce selecionou ${quantidade} ${input}, Total foi R$${preco.toFixed(2)}</h3>`
 
 }
+// Pagina 7 - Vendas
+function CalcularVenda() {
+    valorproduto = document.querySelector("#ValorProduto");
+    condicaopagamento = document.querySelector("#CondicaoPagamento");
 
-// Pagina 8
+    valororiginal = document.querySelector("#ValorOriginal");
+    valorfinal = document.querySelector("#ValorFinal");
+    diferencavalor = document.querySelector("#DiferencaValor");
+
+    let valorprodutorecebido = Number(valorproduto.value);
+    let condicaorecebida = condicaopagamento.value.toLowerCase();
+
+    let valorcalculado;
+    let diferenca;
+
+    if (condicaorecebida === "a") {
+        valorcalculado = valorprodutorecebido * 0.90;
+    }
+    else if (condicaorecebida === "b") {
+        valorcalculado = valorprodutorecebido * 0.85;
+    }
+    else if (condicaorecebida === "c") {
+        valorcalculado = valorprodutorecebido;
+    }
+    else if (condicaorecebida === "d") {
+        valorcalculado = valorprodutorecebido * 1.10;
+    }
+    else {
+        valorcalculado = 0;
+    }
+
+    diferenca = valorcalculado - valorprodutorecebido;
+
+    valororiginal.textContent = valorprodutorecebido.toFixed(2);
+    valorfinal.textContent = valorcalculado.toFixed(2);
+    diferencavalor.textContent = diferenca.toFixed(2);
+}
+// Pagina 8 - Calcular Pagamento
 function calcularPagamento(){
     let nivelSelect = Number(document.getElementById("nivelSelect").value)
     let quantidadeHoras = Number(document.getElementById("quantidadeHora").value)
