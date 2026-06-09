@@ -1,0 +1,30 @@
+<div class="container">
+
+    <h1>Sistema de Vendas</h1>
+
+    <label>Informe o valor do produto:</label>
+    <input id="ValorProduto" type="text">
+
+    <br><br>
+
+    <label>Informe a condição de pagamento:</label>
+    <input id="CondicaoPagamento" type="text">
+
+    <p>
+        a - Dinheiro ou cheque (10% desconto)<br>
+        b - Cartão à vista (15% desconto)<br>
+        c - 2x sem juros<br>
+        d - 2x com juros de 10%
+    </p>
+
+    <button onclick="CalcularVenda()">Calcular valor</button>
+
+    <hr>
+
+    <h3>Valor original: R$ <span id="ValorOriginal"></span></h3>
+    <h3>Valor final: R$ <span id="ValorFinal"></span></h3>
+    <h3>Diferença: R$ <span id="DiferencaValor"></span></h3>
+
+    <script src="/js/vendas.js"></script>
+
+</div>
