@@ -32,3 +32,77 @@ function calcularImc(){
     document.getElementById("totalizadores").innerHTML =
      ` <h3>Seu IMC é de: ${valorImc.toFixed(2)} e você esta <strong>${classificacao}</strong> </h3> `
 }
+
+// Pagina 5 - Calcular Credito Bancario 
+function calcularCreditobancario(){
+    // Inputs
+    let saldoMedio = parseFloat(document.getElementById("saldoMedio").value);
+    let classificacao = "";
+
+    // Funcao para calcular credito
+    function calcularCredito(saldo, porcentagem){
+        let resultado = saldo * (porcentagem / 100)
+        classificacao = `voce tem direto a R$${resultado} de Credito!`;
+    }
+
+    // Verificar qual classificação
+    if(saldoMedio >= 601){
+        calcularCredito(saldoMedio, 40)
+    } else if(saldoMedio >= 401){
+        calcularCredito(saldoMedio, 30)
+    } else if(saldoMedio >= 201){
+        calcularCredito(saldoMedio, 20)
+    } else {
+        classificacao = "voce nao tem nenhum Credito Disponivel"
+    }
+
+    // Escrever no HTML
+    document.getElementById("totalizadores").innerHTML = 
+     ` <h3>Saldo Medio é de: R$${String(saldoMedio.toFixed(2))} e <strong>${classificacao}</strong> </h3> `
+}
+
+// Pagina 6 - Lanchonete
+function lanchonete(){
+    let input = document.getElementById("cardapio").value;
+    let quantidade = Number(document.getElementById("quantidade").value)
+
+    const items = [
+        {nome: "Cachorro Quente", valor: 11},
+        {nome: "Bauru", valor: 8.50},
+        {nome: "Misto Quente", valor: 8},
+        {nome: "Hamburguer", valor: 9},
+        {nome: "CheseeBurguer", valor: 10},
+        {nome:"Refrigerante", valor: 4.5}
+    ]
+
+    items.forEach(item => {
+        if(item.nome == input){
+            preco = item.valor * quantidade;
+        }
+    });
+
+    document.getElementById("totalizadores").innerHTML = 
+        `<h3>Voce selecionou ${quantidade} ${input}, Total foi R$${preco.toFixed(2)}</h3>`
+
+}
+
+// Pagina 8
+function calcularPagamento(){
+    let nivelSelect = Number(document.getElementById("nivelSelect").value)
+    let quantidadeHoras = Number(document.getElementById("quantidadeHora").value)
+    let salario = 0;
+    const niveis = [
+        {nivel: 1, valorHora: 12},
+        {nivel: 2, valorHora: 17},
+        {nivel: 3, valorHora: 25}
+    ]
+
+    niveis.forEach(nivel => {
+        if(nivel.nivel == nivelSelect){
+            salario = Number(nivel.valorHora) * quantidadeHoras * 4.5;
+        }
+    });
+    // Escrever no HTML
+    document.getElementById("totalizadores").innerHTML = 
+     ` <h3>Voce e nivel ${nivelSelect} e seu salario e R$${salario.toFixed(2)} </h3> `
+}
