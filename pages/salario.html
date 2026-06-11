@@ -1,8 +1,14 @@
 <div class="container">
-<h1>Vamos calcular o seu aumento!</h1>
+    <h1>Vamos calcular o seu aumento!</h1>
 
     <label>Informe o seu cargo atual: </label>
-    <input id="CargoInformado" type="text">
+    <select id="CargoInformado">
+        <option value="">Selecione um cargo</option>
+        <option value="gerente">Gerente</option>
+        <option value="engenheiro">Engenheiro</option>
+        <option value="tecnico">Técnico</option>
+        <option value="outro">Outro</option>
+    </select>
     <br>
     <br>
     <label>Me informe o seu salario atual: </label>
@@ -10,13 +16,10 @@
     <br>
     <br>
     <button onclick="CalcularSalario()">Calcular o aumento</button>
-    
+
     <hr>
 
-    <h3>O seu novo salario sera de: <span id="ValorSalarioNovo"></span></h3>
-    <h3>Teve um aumento de R$<span id="AumentoSalario"></span></h3>
-    <h5>Seu salario anterior era: <span id="SalarioAntigo"></span></h5>
-    <p>A diferenca entre o seu salario novo e o antigo e de R$<b><span id="DiferencaSalarios"></span></b></p>
-    
+    <div id="ResultadoSalario"></div>
+
     <script src="/js/salario.js"></script>
 </div>

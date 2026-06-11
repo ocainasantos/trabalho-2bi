@@ -8,7 +8,14 @@
     <br><br>
 
     <label>Informe a condição de pagamento:</label>
-    <input id="CondicaoPagamento" type="text">
+
+    <select id="CondicaoPagamento">
+        <option value="">Selecione uma opção</option>
+        <option value="a">À vista em dinheiro ou cheque (10% desconto)</option>
+        <option value="b">À vista no cartão (15% desconto)</option>
+        <option value="c">2x sem juros</option>
+        <option value="d">2x com juros de 10%</option>
+    </select>
 
     <p>
         a - Dinheiro ou cheque (10% desconto)<br>
@@ -21,9 +28,7 @@
 
     <hr>
 
-    <h3>Valor original: R$ <span id="ValorOriginal"></span></h3>
-    <h3>Valor final: R$ <span id="ValorFinal"></span></h3>
-    <h3>Diferença: R$ <span id="DiferencaValor"></span></h3>
+    <div id="ResultadoVenda"></div>
 
     <script src="/js/vendas.js"></script>
 
