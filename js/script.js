@@ -27,38 +27,40 @@ function VerificarTriangulo() {
         calculotrianguloum > terceirovalor &&
         calculotriangulodois > primeirovalor &&
         calculotriangulotres > segundovalor
-
     ) {
         mensagemtriangulo = "Ele é um triângulo!";
+
+        if (
+            primeirovalor === segundovalor &&
+            segundovalor === terceirovalor
+        ) {
+            tipotriangulo = "Equilátero";
+        }
+        else if (
+            primeirovalor === segundovalor ||
+            primeirovalor === terceirovalor ||
+            segundovalor === terceirovalor
+        ) {
+            tipotriangulo = "Isósceles";
+        }
+        else {
+            tipotriangulo = "Escaleno";
+        }
 
     }
     else {
         mensagemtriangulo = "Não é um triângulo!";
+        tipotriangulo = "";
     }
 
-    if (
-        primeirovalor === segundovalor &&
-        segundovalor === terceirovalor
-    ) {
-        tipotriangulo = "Equilátero";
-    }
-    else if (
-        primeirovalor === segundovalor ||
-        primeirovalor === terceirovalor ||
-        segundovalor === terceirovalor
-    ) {
-        tipotriangulo = "Isósceles";
-    }
-    else {
-        tipotriangulo = "Escaleno";
-    }
-
-    resultadotriangulo.innerHTML = `
+resultadotriangulo.innerHTML = `
     <h3>Realmente é triângulo? <b>${mensagemtriangulo}</b></h3>
 
-    <h3>Qual o tipo do seu triângulo?
-        <b>${tipotriangulo}</b>
-    </h3>
+    ${
+        tipotriangulo
+        ? `<h3>Qual o tipo do seu triângulo? <b>${tipotriangulo}</b></h3>`
+        : ""
+    }
 `;
 }
 
@@ -303,6 +305,7 @@ function calcularPagamento() {
             salario = Number(nivel.valorHora) * quantidadeHoras * 4.5;
         }
     });
+
     // Escrever no HTML
     document.getElementById("totalizadores").innerHTML =
         ` <h3>Voce e nivel ${nivelSelect} e seu salario e R$${salario.toFixed(2)} </h3> `
