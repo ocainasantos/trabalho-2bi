@@ -1,0 +1,25 @@
+<div class="container">
+    <h1>Vamos calcular o seu aumento!</h1>
+
+    <label>Informe o seu cargo atual: </label>
+    <select id="CargoInformado">
+        <option value="">Selecione um cargo</option>
+        <option value="gerente">Gerente</option>
+        <option value="engenheiro">Engenheiro</option>
+        <option value="tecnico">Técnico</option>
+        <option value="outro">Outro</option>
+    </select>
+    <br>
+    <br>
+    <label>Me informe o seu salario atual: </label>
+    <input id="SalarioInformado" type="text">
+    <br>
+    <br>
+    <button onclick="CalcularSalario()">Calcular o aumento</button>
+
+    <hr>
+
+    <div id="ResultadoSalario"></div>
+
+    <script src="/js/salario.js"></script>
+</div>
